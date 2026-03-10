@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Daniel Castillo — Web Designer & UI/UX Specialist | CV</title>
+  <meta name="description" content="John Daniel Castillo — Web Designer and UI/UX Specialist with 12+ years of experience building design systems, CMS themes, and user-centered interfaces for clients across Australia, Canada, and the Philippines.">
+  <meta name="keywords" content="John Daniel Castillo, Web Designer, UI UX Designer, Design Systems, Figma, Adobe Suite, Wireframing, Prototyping, Responsive Design, HTML CSS, Portfolio, Philippines, Resume, CV">
+  <meta name="author" content="John Daniel Castillo">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Daniel Castillo",
+    "alternateName": "JD Castillo",
+    "email": "mailto:phantomdain@gmail.com",
+    "telephone": "+639423629271",
+    "sameAs": ["https://www.linkedin.com/in/johndanielcastillo","https://www.behance.net/johndcastillo","https://dribbble.com/johndcastillo"],
+    "address": { "@type": "PostalAddress", "addressRegion": "Calabarzon", "addressCountry": "PH" },
+    "jobTitle": "Web Designer & UI/UX Specialist",
+    "knowsAbout": ["UI/UX Design","Web Design","Design Systems","Wireframing","Prototyping","Responsive Design","HTML","CSS","Adobe Suite","Figma"]
+  }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --accent: #5b21b6; --accent-light: #ede9fe; }
+
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #e8eaf0; }
+
+    .topbar { background: #0f172a; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+    .topbar-left { display: flex; flex-direction: column; }
+    .topbar-name { font-size: 13px; font-weight: 600; color: #94a3b8; }
+    .topbar-version { font-size: 10.5px; color: var(--accent); font-weight: 500; }
+    .download-btn { padding: 7px 16px; background: #fff; color: #0f172a; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; font-family: inherit; transition: background .2s; }
+    .download-btn:hover { background: #f1f5f9; }
+    .download-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+    .cv-wrapper { max-width: 860px; margin: 32px auto; padding: 0 16px 72px; }
+    #cv-content { background: #fff; box-shadow: 0 8px 40px rgba(0,0,0,.14); border-radius: 6px; overflow: hidden; }
+
+    .cv-header { background: var(--accent); color: #fff; padding: 34px 44px; display: flex; align-items: center; gap: 28px; position: relative; overflow: hidden; }
+    .cv-header::after { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.06); pointer-events: none; }
+    .cv-header::before { content: ''; position: absolute; right: 80px; bottom: -80px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,.04); pointer-events: none; }
+    .cv-logo-wrap { background: #fff; border-radius: 8px; padding: 8px 14px; flex-shrink: 0; display: flex; align-items: center; position: relative; z-index: 1; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .cv-logo { width: 130px; height: auto; display: block; }
+    .cv-header-info { position: relative; z-index: 1; }
+    .cv-header-info h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; line-height: 1.1; }
+    .cv-role { font-size: 14px; opacity: .82; margin-top: 5px; }
+    .cv-location { font-size: 12px; opacity: .65; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+
+    .cv-body { display: grid; grid-template-columns: 232px 1fr; }
+    .cv-sidebar { background: #f8fafc; padding: 28px 20px; border-right: 1px solid #e2e8f0; }
+    .sidebar-section { margin-bottom: 24px; }
+    .sidebar-section:last-child { margin-bottom: 0; }
+    .sidebar-section h2 { font-size: 9.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent); margin-bottom: 11px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+    .contact-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 9px; font-size: 11.5px; color: #475569; line-height: 1.45; }
+    .contact-item svg { flex-shrink: 0; margin-top: 1px; color: var(--accent); }
+    .contact-item a { color: #475569; text-decoration: none; word-break: break-all; }
+    .contact-item a:hover { color: var(--accent); }
+    .skill-item { margin-bottom: 9px; }
+    .skill-name { font-size: 11.5px; color: #334155; font-weight: 500; margin-bottom: 4px; }
+    .skill-bar { height: 3px; background: #e2e8f0; border-radius: 99px; overflow: hidden; }
+    .skill-fill { height: 100%; background: var(--accent); border-radius: 99px; }
+    .tag { display: inline-block; background: var(--accent-light); color: var(--accent); padding: 3px 9px; border-radius: 99px; font-size: 11px; font-weight: 500; margin: 2px 2px 2px 0; }
+    .cert-item { font-size: 11px; color: #64748b; margin-bottom: 7px; padding-left: 12px; position: relative; line-height: 1.5; }
+    .cert-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+    .cv-main { padding: 28px 36px; }
+    .cv-section { margin-bottom: 24px; }
+    .cv-section:last-child { margin-bottom: 0; }
+    .cv-section h2 { font-size: 9.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+    .summary-text { font-size: 13px; color: #475569; line-height: 1.75; }
+    article.exp-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #f1f5f9; page-break-inside: avoid; }
+    article.exp-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 2px; }
+    .exp-role { font-size: 13.5px; font-weight: 600; color: #1e293b; }
+    .exp-date { font-size: 11px; color: #94a3b8; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .exp-company { font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 7px; }
+    .exp-desc { font-size: 12px; color: #64748b; line-height: 1.65; }
+    .exp-desc ul { padding-left: 14px; }
+    .exp-desc li { margin-bottom: 3px; }
+    .edu-item { margin-bottom: 14px; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-degree { font-size: 13.5px; font-weight: 600; color: #1e293b; }
+    .edu-school { font-size: 12px; color: var(--accent); font-weight: 500; margin-top: 2px; }
+    .edu-year { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+    @media print {
+      .topbar { display: none !important; }
+      .cv-wrapper { margin: 0; padding: 0; max-width: 100%; }
+      #cv-content { box-shadow: none; border-radius: 0; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topbar" aria-label="Page controls">
+  <div class="topbar-left">
+    <span class="topbar-name">John Daniel Castillo</span>
+    <span class="topbar-version">Web Designer &amp; UI/UX Specialist</span>
+  </div>
+  <button class="download-btn" onclick="downloadPDF()" aria-label="Download CV as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download PDF
+  </button>
+</nav>
+
+<div class="cv-wrapper">
+<div id="cv-content" role="document" aria-label="CV — John Daniel Castillo, Web Designer">
+
+  <header class="cv-header">
+    <div class="cv-logo-wrap"><img src="dains-new-logo.png" alt="John Daniel Castillo" class="cv-logo"></div>
+    <div class="cv-header-info">
+      <h1 itemprop="name">John Daniel Castillo</h1>
+      <p class="cv-role" itemprop="jobTitle">Web Designer &amp; UI/UX Specialist</p>
+      <p class="cv-location"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Calabarzon, Philippines</p>
+    </div>
+  </header>
+
+  <div class="cv-body">
+    <aside class="cv-sidebar" aria-label="Contact and skills">
+
+      <section class="sidebar-section"><h2>Contact</h2><address>
+        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+639423629271">+63 942 362 9271</a></div>
+        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:phantomdain@gmail.com">phantomdain@gmail.com</a></div>
+        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><a href="https://linkedin.com/in/johndanielcastillo" target="_blank" rel="noopener">linkedin.com/in/johndanielcastillo</a></div>
+        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><a href="https://behance.net/johndcastillo" target="_blank" rel="noopener">behance.net/johndcastillo</a></div>
+        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.88 6.019-8.04 6.344 1.738 1.353 3.93 2.166 6.29 2.166 1.42 0 2.77-.29 4-.76zm-12.22-2.195c.197-.34 2.855-4.933 8.2-6.498.146-.047.29-.08.44-.12-.28-.63-.57-1.26-.87-1.87-5.014 1.49-9.87 1.43-10.3 1.42-.004.083-.004.166-.004.25 0 2.54.97 4.866 2.534 6.62zm-2.177-8.426c.44.012 4.586.049 9.32-1.22-1.67-2.97-3.46-5.48-3.74-5.87-2.65 1.25-4.66 3.6-5.58 6.09zm9.65-7.65c.29.41 2.09 2.92 3.74 5.94 3.56-1.33 5.07-3.36 5.25-3.61-1.48-1.32-3.43-2.13-5.55-2.13-.483 0-.96.047-1.44.14zm4.54 8.254c3.502-.55 6.568.3 6.916.4-.05-2.297-.838-4.413-2.176-6.097-.2.25-1.844 2.392-5.498 3.84l.758 1.857z"/></svg><a href="https://dribbble.com/johndcastillo" target="_blank" rel="noopener">dribbble.com/johndcastillo</a></div>
+      </address></section>
+
+      <section class="sidebar-section"><h2>Skills</h2><div role="list">
+        <div class="skill-item" role="listitem"><div class="skill-name">UI/UX Design</div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill-item" role="listitem"><div class="skill-name">Web Design & Layout</div><div class="skill-bar"><div class="skill-fill" style="width:97%"></div></div></div>
+        <div class="skill-item" role="listitem"><div class="skill-name">Design Systems</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item" role="listitem"><div class="skill-name">Wireframing & Prototyping</div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item" role="listitem"><div class="skill-name">Visual & Graphic Design</div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+        <div class="skill-item" role="listitem"><div class="skill-name">Responsive Design</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item" role="listitem"><div class="skill-name">HTML / CSS</div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item" role="listitem"><div class="skill-name">Adobe Suite / Figma</div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+      </div></section>
+
+      <section class="sidebar-section"><h2>Languages</h2><span class="tag" lang="tl">Filipino</span><span class="tag" lang="en">English</span></section>
+
+      <section class="sidebar-section"><h2>Certifications</h2>
+        <p class="cert-item">Build a Database With Notion</p>
+        <p class="cert-item">Logo Design: From Concept to Presentation — Sagi Haviv</p>
+        <p class="cert-item">Introduction to Using Databases</p>
+        <p class="cert-item">Build a Mobile App With Glide</p>
+        <p class="cert-item">Build a Resource Library Using Super &amp; Notion</p>
+      </section>
+
+    </aside>
+
+    <main class="cv-main" aria-label="CV main content">
+
+      <section class="cv-section"><h2>Professional Summary</h2>
+        <p class="summary-text">Creative and detail-oriented web designer and UI/UX specialist with 12+ years of experience crafting user-centered digital experiences. Expert in building scalable design systems, developing CMS themes and templates, and translating business goals into intuitive, visually compelling interfaces. Passionate about the intersection of aesthetics, usability, and performance.</p>
+      </section>
+
+      <section class="cv-section"><h2>Work Experience</h2>
+
+        <article class="exp-item">
+          <div class="exp-header"><h3 class="exp-role">Product Innovation Manager — Web Design Lead</h3><time class="exp-date">May 2024 – Present</time></div>
+          <p class="exp-company">Digital Marketer Bee · Albury, NSW, Australia</p>
+          <div class="exp-desc"><ul>
+            <li>Leading the agency's web design and development services from concept to delivery.</li>
+            <li>Driving design direction and implementing scalable design systems for agency clients.</li>
+            <li>Streamlining design-to-development workflows for maximum efficiency.</li>
+          </ul></div>
+        </article>
+
+        <article class="exp-item">
+          <div class="exp-header"><h3 class="exp-role">Lead Designer</h3><time class="exp-date">Feb 2018 – May 2021</time></div>
+          <p class="exp-company">Ubertor.com · Richmond, Canada</p>
+          <div class="exp-desc"><ul>
+            <li>Built and maintained the internal design system, CMS themes, and template library.</li>
+            <li>Collaborated with Marketing on digital ads, newsletters, and social media creative assets.</li>
+            <li>Led client web design projects from brief through to final launch.</li>
+          </ul></div>
+        </article>
+
+        <article class="exp-item">
+          <div class="exp-header"><h3 class="exp-role">Web Designer</h3><time class="exp-date">Aug 2013 – Feb 2018</time></div>
+          <p class="exp-company">Ubertor.com · Richmond, Canada</p>
+          <div class="exp-desc"><ul>
+            <li>Provided creative direction to the design team and engaged clients on website usability.</li>
+            <li>Facilitated and optimized design workflows to ensure on-time delivery.</li>
+            <li>Hands-on design and production across client and internal projects.</li>
+          </ul></div>
+        </article>
+
+        <article class="exp-item">
+          <div class="exp-header"><h3 class="exp-role">Web Design Consultant</h3><time class="exp-date">Jun 2015 – Sep 2016</time></div>
+          <p class="exp-company">The Virtual Hub Philippines · Remote, Australia</p>
+          <div class="exp-desc"><ul>
+            <li>Provided web design and maintenance services to clients across Australia.</li>
+            <li>Planned websites from inception and consulted clients on layout, UX, and information architecture.</li>
+          </ul></div>
+        </article>
+
+        <article class="exp-item">
+          <div class="exp-header"><h3 class="exp-role">Freelance Web Designer</h3><time class="exp-date">Jan 2017 – Apr 2017</time></div>
+          <p class="exp-company">Confetti Design · Melbourne, Australia</p>
+          <div class="exp-desc">Designed websites, landing pages, infographics, and web graphics for CD clients.</div>
+        </article>
+
+        <article class="exp-item">
+          <div class="exp-header"><h3 class="exp-role">UI Designer — Founding Team</h3><time class="exp-date">Jul 2011 – Nov 2011</time></div>
+          <p class="exp-company">PayrollHero.com</p>
+          <div class="exp-desc">Created wireframes and UI mock-ups for the core SaaS product as a founding team member.</div>
+        </article>
+
+      </section>
+
+      <section class="cv-section"><h2>Education</h2>
+        <div class="edu-item"><p class="edu-degree">BS Business Administration — Management</p><p class="edu-school">University of Rizal System</p><p class="edu-year">2006 – 2010</p></div>
+        <div class="edu-item"><p class="edu-degree">Diploma in Christian Leadership</p><p class="edu-school">Andrew Theological Seminary</p></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function downloadPDF() {
+  const btn = document.querySelector('.download-btn');
+  btn.textContent = 'Generating…';
+  btn.disabled = true;
+  const compact = document.createElement('style');
+  compact.id = 'pdf-compact';
+  compact.textContent = '#cv-content{border-radius:0!important;box-shadow:none!important;overflow:visible!important}#cv-content .cv-header{padding:22px 36px!important}#cv-content .cv-sidebar{padding:20px 16px!important}#cv-content .cv-main{padding:20px 28px!important}#cv-content .sidebar-section{margin-bottom:16px!important}#cv-content .cv-section{margin-bottom:16px!important}#cv-content .sidebar-section h2,#cv-content .cv-section h2{margin-bottom:8px!important}#cv-content .summary-text{font-size:12px!important;line-height:1.55!important}#cv-content article.exp-item{margin-bottom:12px!important;padding-bottom:12px!important}#cv-content .exp-company{font-size:11.5px!important;margin-bottom:4px!important}#cv-content .exp-date{font-size:10.5px!important}#cv-content .exp-desc{font-size:11.5px!important;line-height:1.5!important}#cv-content .exp-desc li{margin-bottom:2px!important}#cv-content .skill-item{margin-bottom:6px!important}#cv-content .skill-name{font-size:11px!important}#cv-content .contact-item{margin-bottom:6px!important}#cv-content .cert-item{margin-bottom:4px!important}';
+  document.head.appendChild(compact);
+  html2pdf().set({
+    margin: [6, 6, 6, 6],
+    filename: 'John-Daniel-Castillo_Web-Designer_CV.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, logging: false, windowWidth: 860 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  }).from(document.getElementById('cv-content')).save().then(() => {
+    compact.remove();
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF';
+    btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
