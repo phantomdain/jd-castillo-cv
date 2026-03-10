@@ -7,6 +7,7 @@
   <meta name="description" content="John Daniel Castillo — Marketing Designer and Digital Strategist with 12+ years of experience in brand design, social media marketing, digital campaigns, and integrated marketing communications.">
   <meta name="keywords" content="John Daniel Castillo, Marketing Designer, Digital Marketing, Brand Identity, Graphic Design, Social Media Marketing, Content Creation, Brand Strategy, Digital Strategist, Philippines, Resume, CV">
   <meta name="author" content="John Daniel Castillo">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
 
   <script type="application/ld+json">
   {
@@ -44,8 +45,8 @@
     .cv-header { background: var(--accent); color: #fff; padding: 34px 44px; display: flex; align-items: center; gap: 28px; position: relative; overflow: hidden; }
     .cv-header::after { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.06); pointer-events: none; }
     .cv-header::before { content: ''; position: absolute; right: 80px; bottom: -80px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,.04); pointer-events: none; }
-    .cv-logo-wrap { background: #fff; border-radius: 8px; padding: 8px 14px; flex-shrink: 0; display: flex; align-items: center; position: relative; z-index: 1; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
-    .cv-logo { width: 130px; height: auto; display: block; }
+    .cv-logo-wrap { background: #fff; border-radius: 12px; padding: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .cv-logo { width: 54px; height: 54px; display: block; color: #00AEEF; }
     .cv-header-info { position: relative; z-index: 1; }
     .cv-header-info h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; line-height: 1.1; }
     .cv-role { font-size: 14px; opacity: .82; margin-top: 5px; }
@@ -113,7 +114,7 @@
 <div id="cv-content" role="document" aria-label="CV — John Daniel Castillo, Marketing Designer">
 
   <header class="cv-header">
-    <div class="cv-logo-wrap"><img src="dains-new-logo.png" alt="John Daniel Castillo" class="cv-logo"></div>
+    <div class="cv-logo-wrap"><svg class="cv-logo" viewBox="0 0 728 732" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JD Castillo"><path d="M335.808 668.244C185.14 668.244 63.0001 546.104 63 395.437V63.7563H335.808V668.244ZM392.192 63.7563C542.86 63.7563 665 185.897 665 336.564V668.244H392.192V63.7563ZM575 534.756C547.386 534.756 525 557.142 525 584.756C525 612.371 547.386 634.756 575 634.756C602.614 634.756 625 612.371 625 584.756C625 557.142 602.614 534.756 575 534.756Z" fill="currentColor"/></svg></div>
     <div class="cv-header-info">
       <h1 itemprop="name">John Daniel Castillo</h1>
       <p class="cv-role" itemprop="jobTitle">Marketing Designer &amp; Digital Strategist</p>
@@ -229,21 +230,30 @@ function downloadPDF() {
   const btn = document.querySelector('.download-btn');
   btn.textContent = 'Generating…';
   btn.disabled = true;
-  const compact = document.createElement('style');
-  compact.id = 'pdf-compact';
-  compact.textContent = '#cv-content{border-radius:0!important;box-shadow:none!important;overflow:visible!important}#cv-content .cv-header{padding:22px 36px!important}#cv-content .cv-sidebar{padding:20px 16px!important}#cv-content .cv-main{padding:20px 28px!important}#cv-content .sidebar-section{margin-bottom:16px!important}#cv-content .cv-section{margin-bottom:16px!important}#cv-content .sidebar-section h2,#cv-content .cv-section h2{margin-bottom:8px!important}#cv-content .summary-text{font-size:12px!important;line-height:1.55!important}#cv-content article.exp-item{margin-bottom:12px!important;padding-bottom:12px!important}#cv-content .exp-company{font-size:11.5px!important;margin-bottom:4px!important}#cv-content .exp-date{font-size:10.5px!important}#cv-content .exp-desc{font-size:11.5px!important;line-height:1.5!important}#cv-content .exp-desc li{margin-bottom:2px!important}#cv-content .skill-item{margin-bottom:6px!important}#cv-content .skill-name{font-size:11px!important}#cv-content .contact-item{margin-bottom:6px!important}#cv-content .cert-item{margin-bottom:4px!important}';
-  document.head.appendChild(compact);
-  html2pdf().set({
-    margin: [6, 6, 6, 6],
-    filename: 'John-Daniel-Castillo_Marketing-Designer_CV.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, logging: false, windowWidth: 860 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  }).from(document.getElementById('cv-content')).save().then(() => {
-    compact.remove();
-    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF';
-    btn.disabled = false;
-  });
+  const clone = document.getElementById('cv-content').cloneNode(true);
+  clone.id = 'cv-content-pdf';
+  clone.style.cssText = 'border-radius:0;box-shadow:none;overflow:visible;';
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'position:fixed;left:-9999px;top:0;width:860px;';
+  wrap.appendChild(clone);
+  document.body.appendChild(wrap);
+  const sheet = document.createElement('style');
+  sheet.textContent = '#cv-content-pdf .cv-header{padding:22px 36px!important}#cv-content-pdf .cv-sidebar{padding:20px 16px!important}#cv-content-pdf .cv-main{padding:20px 28px!important}#cv-content-pdf .sidebar-section{margin-bottom:16px!important}#cv-content-pdf .cv-section{margin-bottom:16px!important}#cv-content-pdf .sidebar-section h2,#cv-content-pdf .cv-section h2{margin-bottom:8px!important}#cv-content-pdf .summary-text{font-size:12px!important;line-height:1.55!important}#cv-content-pdf article.exp-item{margin-bottom:12px!important;padding-bottom:12px!important}#cv-content-pdf .exp-company{font-size:11.5px!important;margin-bottom:4px!important}#cv-content-pdf .exp-date{font-size:10.5px!important}#cv-content-pdf .exp-desc{font-size:11.5px!important;line-height:1.5!important}#cv-content-pdf .exp-desc li{margin-bottom:2px!important}#cv-content-pdf .skill-item{margin-bottom:6px!important}#cv-content-pdf .skill-name{font-size:11px!important}#cv-content-pdf .contact-item{margin-bottom:6px!important}#cv-content-pdf .cert-item{margin-bottom:4px!important}';
+  document.head.appendChild(sheet);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    html2pdf().set({
+      margin: [6, 6, 6, 6],
+      filename: 'John-Daniel-Castillo_Marketing-Designer_CV.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    }).from(clone).save().then(() => {
+      document.body.removeChild(wrap);
+      document.head.removeChild(sheet);
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF';
+      btn.disabled = false;
+    });
+  }));
 }
 </script>
 </body>
