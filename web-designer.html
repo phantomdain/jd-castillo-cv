@@ -57,9 +57,9 @@
     .sidebar-section { margin-bottom: 24px; }
     .sidebar-section:last-child { margin-bottom: 0; }
     .sidebar-section h2 { font-size: 9.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent); margin-bottom: 11px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
-    .contact-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 9px; font-size: 11.5px; color: #475569; line-height: 1.45; }
-    .contact-item svg { flex-shrink: 0; margin-top: 1px; color: var(--accent); }
-    .contact-item a { color: #475569; text-decoration: none; word-break: break-all; }
+    .contact-item { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; font-size: 11.5px; color: #475569; overflow: hidden; }
+    .contact-item svg { flex-shrink: 0; color: var(--accent); }
+    .contact-item a { color: #475569; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .contact-item a:hover { color: var(--accent); }
     .skill-item { margin-bottom: 9px; }
     .skill-name { font-size: 11.5px; color: #334155; font-weight: 500; margin-bottom: 4px; }
@@ -95,6 +95,36 @@
       #cv-content { box-shadow: none; border-radius: 0; }
       body { background: #fff; }
     }
+
+    @media (max-width: 640px) {
+      .topbar { padding: 0 16px; height: 48px; }
+      .topbar-name { font-size: 12px; }
+      .topbar-version { font-size: 10px; }
+      .download-btn { padding: 6px 12px; font-size: 11.5px; gap: 5px; }
+      .cv-wrapper { margin: 0 auto; padding: 0 0 56px; }
+      #cv-content { border-radius: 0; box-shadow: none; }
+      .cv-header { padding: 20px 20px; gap: 14px; }
+      .cv-logo-wrap { padding: 8px; }
+      .cv-logo { width: 40px; height: 40px; }
+      .cv-header-info h1 { font-size: 20px; letter-spacing: -.3px; }
+      .cv-role { font-size: 12.5px; }
+      .cv-location { font-size: 11px; }
+      .cv-body { grid-template-columns: 1fr; }
+      .cv-main { order: 1; padding: 24px 20px; }
+      .cv-sidebar { order: 2; border-right: none; border-top: 1px solid #e2e8f0; padding: 24px 20px; }
+      .summary-text { font-size: 12.5px; }
+      .exp-role { font-size: 13px; }
+      .exp-company { font-size: 12px; }
+      .exp-desc { font-size: 12px; }
+      .edu-degree { font-size: 13px; }
+    }
+
+    @media print {
+      .topbar { display: none !important; }
+      .cv-wrapper { margin: 0; padding: 0; max-width: 100%; }
+      #cv-content { box-shadow: none; border-radius: 0; }
+      body { background: #fff; }
+    }
   </style>
 </head>
 <body>
@@ -114,7 +144,7 @@
 <div id="cv-content" role="document" aria-label="CV — John Daniel Castillo, Web Designer">
 
   <header class="cv-header">
-    <div class="cv-logo-wrap"><svg class="cv-logo" viewBox="0 0 728 732" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JD Castillo"><path d="M335.808 668.244C185.14 668.244 63.0001 546.104 63 395.437V63.7563H335.808V668.244ZM392.192 63.7563C542.86 63.7563 665 185.897 665 336.564V668.244H392.192V63.7563ZM575 534.756C547.386 534.756 525 557.142 525 584.756C525 612.371 547.386 634.756 575 634.756C602.614 634.756 625 612.371 625 584.756C625 557.142 602.614 534.756 575 534.756Z" fill="currentColor"/></svg></div>
+    <div class="cv-logo-wrap"><svg class="cv-logo" viewBox="0 0 728 732" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JD Castillo"><path d="M335.808 668.244C185.14 668.244 63.0001 546.104 63 395.437V63.7563H335.808V668.244ZM392.192 63.7563C542.86 63.7563 665 185.897 665 336.564V668.244H392.192V63.7563ZM575 534.756C547.386 534.756 525 557.142 525 584.756C525 612.371 547.386 634.756 575 634.756C602.614 634.756 625 612.371 625 584.756C625 557.142 602.614 534.756 575 534.756Z" fill="#00AEEF"/></svg></div>
     <div class="cv-header-info">
       <h1 itemprop="name">John Daniel Castillo</h1>
       <p class="cv-role" itemprop="jobTitle">Web Designer &amp; UI/UX Specialist</p>
@@ -227,7 +257,8 @@
 </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 function downloadPDF() {
   const btn = document.querySelector('.download-btn');
@@ -237,22 +268,24 @@ function downloadPDF() {
   clone.id = 'cv-content-pdf';
   clone.style.cssText = 'border-radius:0;box-shadow:none;overflow:visible;';
   const wrap = document.createElement('div');
-  wrap.style.cssText = 'position:fixed;left:-9999px;top:0;width:860px;';
+  wrap.style.cssText = 'position:absolute;left:-9999px;top:0;width:860px;';
   wrap.appendChild(clone);
   document.body.appendChild(wrap);
   const sheet = document.createElement('style');
-  sheet.textContent = '#cv-content-pdf .cv-header{padding:22px 36px!important}#cv-content-pdf .cv-sidebar{padding:20px 16px!important}#cv-content-pdf .cv-main{padding:20px 28px!important}#cv-content-pdf .sidebar-section{margin-bottom:16px!important}#cv-content-pdf .cv-section{margin-bottom:16px!important}#cv-content-pdf .sidebar-section h2,#cv-content-pdf .cv-section h2{margin-bottom:8px!important}#cv-content-pdf .summary-text{font-size:12px!important;line-height:1.55!important}#cv-content-pdf article.exp-item{margin-bottom:12px!important;padding-bottom:12px!important}#cv-content-pdf .exp-company{font-size:11.5px!important;margin-bottom:4px!important}#cv-content-pdf .exp-date{font-size:10.5px!important}#cv-content-pdf .exp-desc{font-size:11.5px!important;line-height:1.5!important}#cv-content-pdf .exp-desc li{margin-bottom:2px!important}#cv-content-pdf .skill-item{margin-bottom:6px!important}#cv-content-pdf .skill-name{font-size:11px!important}#cv-content-pdf .contact-item{margin-bottom:6px!important}#cv-content-pdf .cert-item{margin-bottom:4px!important}';
+  sheet.textContent = '#cv-content-pdf .cv-header{padding:22px 36px!important}#cv-content-pdf .cv-sidebar{padding:20px 16px!important}#cv-content-pdf .cv-main{padding:20px 28px!important}#cv-content-pdf .sidebar-section{margin-bottom:16px!important}#cv-content-pdf .cv-section{margin-bottom:16px!important}#cv-content-pdf .sidebar-section h2,#cv-content-pdf .cv-section h2{margin-bottom:8px!important}#cv-content-pdf .summary-text{font-size:12px!important;line-height:1.55!important}#cv-content-pdf article.exp-item{margin-bottom:12px!important;padding-bottom:12px!important}#cv-content-pdf .exp-company{font-size:11.5px!important;margin-bottom:4px!important}#cv-content-pdf .exp-date{font-size:10.5px!important}#cv-content-pdf .exp-desc{font-size:11.5px!important;line-height:1.5!important}#cv-content-pdf .exp-desc li{margin-bottom:2px!important}#cv-content-pdf .skill-item{margin-bottom:6px!important}#cv-content-pdf .skill-name{font-size:11px!important}#cv-content-pdf .contact-item{margin-bottom:6px!important}#cv-content-pdf .cert-item{margin-bottom:4px!important}#cv-content-pdf .cv-header{background:#fff!important;color:#1e293b!important;border-bottom:2px solid #1e293b!important}#cv-content-pdf .cv-header::after,#cv-content-pdf .cv-header::before{display:none!important}#cv-content-pdf .cv-header-info h1{color:#1e293b!important}#cv-content-pdf .cv-role{color:#475569!important;opacity:1!important}#cv-content-pdf .cv-location{color:#64748b!important;opacity:1!important}#cv-content-pdf .cv-logo-wrap{background:#f1f5f9!important;box-shadow:none!important}#cv-content-pdf .cv-logo path{fill:#1e293b!important}#cv-content-pdf .sidebar-section h2,#cv-content-pdf .cv-section h2{color:#1e293b!important;border-bottom-color:#1e293b!important}#cv-content-pdf .exp-company,#cv-content-pdf .edu-school{color:#475569!important}#cv-content-pdf .skill-fill{background:#475569!important}#cv-content-pdf .tag{background:#f1f5f9!important;color:#1e293b!important}#cv-content-pdf .cert-item::before{background:#475569!important}#cv-content-pdf .contact-item svg{color:#475569!important}';
   document.head.appendChild(sheet);
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    html2pdf().set({
-      margin: [6, 6, 6, 6],
-      filename: 'John-Daniel-Castillo_Web-Designer_CV.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    }).from(clone).save().then(() => {
+    html2canvas(clone, { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff', windowWidth: 860 }).then(canvas => {
       document.body.removeChild(wrap);
       document.head.removeChild(sheet);
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('portrait', 'mm', 'a4');
+      const m = 6, W = 198, H = 285;
+      const ratio = canvas.height / canvas.width;
+      let iw = W, ih = iw * ratio;
+      if (ih > H) { ih = H; iw = ih / ratio; }
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', m, m, iw, ih);
+      pdf.save('John-Daniel-Castillo_Web-Designer_CV.pdf');
       btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF';
       btn.disabled = false;
     });
